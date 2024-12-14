@@ -15,11 +15,11 @@ export interface ListOfGifsProps {
 
 export interface GlobalContextInterface {
   offset: number;
-  gifs: Set<string>;
+  gifs: Map<string, APIGifData>;
   isEnd: boolean;
 
   nextPage();
-  addGif(id: string): boolean;
+  addGifs(gifs: APIGifData[]): boolean;
   setEnd();
 }
 

@@ -1,13 +1,15 @@
+"use client";
+
 import { GlobalContextInterface } from "@/src/types.d";
 import { createContext } from "react";
 
 const GlobalContext = createContext<GlobalContextInterface>({
-  gifs: new Set(),
+  gifs: new Map(),
   offset: 0,
   isEnd: true,
 
   nextPage() {},
-  addGif(id) {
+  addGifs(id) {
     return false;
   },
   setEnd() {},

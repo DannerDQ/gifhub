@@ -3,7 +3,7 @@ interface FetchReturn<T> {
   error?: string;
 }
 
-export default async function useFetch<T>(
+export default async function useFetch<T = any>(
   url: string
 ): Promise<FetchReturn<T>> {
   try {
@@ -14,8 +14,6 @@ export default async function useFetch<T>(
     }
 
     const data: T = await response.json();
-
-    console.log({ data });
 
     return {
       data,

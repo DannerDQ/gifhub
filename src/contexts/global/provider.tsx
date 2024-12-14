@@ -1,24 +1,31 @@
 "use client";
 
-import { props } from "@/src/types.d";
+import { APIGifData, props } from "@/src/types.d";
 import { useCallback, useState } from "react";
 import GlobalContext from ".";
 
 export default function GlobalContextProvider({ children }: props) {
   const [offset, setOffset] = useState(0);
-  const [gifs, setGifs] = useState<Set<string>>(new Set());
+  const [gifs, setGifs] = useState<Map<string, APIGifData>>(new Map());
   const [isEnd, setIsEnd] = useState(false);
 
   const nextPage = useCallback(() => {
     setOffset((prev) => prev + 25);
   }, [setOffset]);
 
-  const addGif = useCallback(
-    (id: string) => {
-      if (gifs.has(id)) return false;
-      setGifs((prev) => new Set(prev).add(id));
+  const addGifs = useCallback(
+    (gifsToAdd: APIGifData[]) => {
+      const newMap = new Map(gifs);
 
-      return true;
+      gifsToAdd.forEach((gifData) => {
+        if (!newMap.has(gifData.id)) {
+          newMap.set(gifData.id, gifData);
+        }
+      });
+
+      setGifs(newMap);
+
+      return newMap.size > 0;
     },
     [setGifs]
   );
@@ -27,7 +34,7 @@ export default function GlobalContextProvider({ children }: props) {
 
   return (
     <GlobalContext.Provider
-      value={{ offset, gifs, isEnd, addGif, nextPage, setEnd }}
+      value={{ offset, gifs, isEnd, addGifs, nextPage, setEnd }}
     >
       {children}
     </GlobalContext.Provider>
