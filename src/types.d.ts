@@ -4,6 +4,15 @@ export interface props {
   children: Readonly<ReactNode>;
 }
 
+export interface HomeProps {
+  data?: APIGifArrayResponse;
+  error?: string;
+}
+
+export interface ListOfGifsProps {
+  data: APIGifData[];
+}
+
 interface APIGifArrayResponse {
   data: APIGifData[];
   meta: MetaData;
@@ -69,8 +78,8 @@ interface Images {
 }
 
 interface FixedSizeDownsampled {
-  height: string;
-  width: string;
+  height: number;
+  width: number;
   size: string;
   url: string;
   webp_size: string;
@@ -78,8 +87,8 @@ interface FixedSizeDownsampled {
 }
 
 interface FixedSize {
-  height: string;
-  width: string;
+  height: number;
+  width: number;
   size: string;
   url: string;
   mp4_size: string;
