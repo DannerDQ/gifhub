@@ -40,3 +40,13 @@ a {
     color-scheme: dark;
   }
 }
+
+
+header {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
