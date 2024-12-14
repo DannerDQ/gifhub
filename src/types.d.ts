@@ -13,6 +13,16 @@ export interface ListOfGifsProps {
   data: APIGifData[];
 }
 
+export interface GlobalContextInterface {
+  offset: number;
+  gifs: Set<string>;
+  isEnd: boolean;
+
+  nextPage();
+  addGif(id: string): boolean;
+  setEnd();
+}
+
 interface APIGifArrayResponse {
   data: APIGifData[];
   meta: MetaData;
