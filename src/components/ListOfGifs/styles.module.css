@@ -1,13 +1,24 @@
 .list {
-  columns: 2 auto;
-  column-gap: 8px;
-  & li {
-    list-style: none;
-    margin-bottom: 5px;
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -10px; /* gutter size offset */
+  width: auto;
+  height: 100%;
+
+  & .column {
+    padding-left: 10px; /* gutter size */
+    background-clip: padding-box; 
+  }
+
+  & .item {
+    background: grey;
+    margin-bottom: 10px;
   }
 
   & img {
     width: 100%;
+
     height: auto;
   }
 }
