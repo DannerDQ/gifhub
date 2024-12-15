@@ -16,6 +16,7 @@ export default function GlobalContextProvider({ children }: props) {
   const addGifs = useCallback(
     (gifsToAdd: APIGifData[]) => {
       const newMap = new Map(gifs);
+      console.log({ newMap, gifs });
 
       gifsToAdd.forEach((gifData) => {
         if (!newMap.has(gifData.id)) {
@@ -25,9 +26,9 @@ export default function GlobalContextProvider({ children }: props) {
 
       setGifs(newMap);
 
-      return newMap.size > 0;
+      return newMap.size > gifs.size;
     },
-    [setGifs]
+    [setGifs, gifs]
   );
 
   const setEnd = useCallback(() => setIsEnd(true), [setIsEnd]);

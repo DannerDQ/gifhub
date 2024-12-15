@@ -1,13 +1,14 @@
 "use client";
 
 import ListOfGifs from "@/components/ListOfGifs";
+import Observer from "@/components/Observer";
+import GlobalContext from "@/contexts/global";
+import { APIGifArrayResponse } from "@/types";
 import { useContext, useEffect } from "react";
-import GlobalContext from "../contexts/global";
-import { APIGifArrayResponse } from "../types";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const { setEnd, offset, addGifs, gifs } = useContext(GlobalContext);
+  const { setEnd, offset, addGifs, gifs, isEnd } = useContext(GlobalContext);
 
   useEffect(() => {
     (async () => {
@@ -28,6 +29,7 @@ export default function Home() {
       </div>
       <div>
         <ListOfGifs data={Array.from(gifs.values())} />
+        {isEnd ? null : <Observer />}
       </div>
     </div>
   );
