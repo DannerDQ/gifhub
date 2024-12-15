@@ -1,9 +1,10 @@
 import { APIGifData } from "@/src/types.d";
 import nextColor from "@/src/utils/nextColor";
 import Image from "next/image";
+import { memo } from "react";
 import styles from "./styles.module.css";
 
-export default function GifPreview({ data }: { data: APIGifData }) {
+function GifPreview({ data }: { data: APIGifData }) {
   const bgColor = nextColor().next();
 
   return (
@@ -26,3 +27,7 @@ export default function GifPreview({ data }: { data: APIGifData }) {
     </div>
   );
 }
+
+export default memo(GifPreview, (prevProps, nextProps) => {
+  return prevProps.data.id === nextProps.data.id;
+});

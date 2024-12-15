@@ -10,13 +10,12 @@ export default function GlobalContextProvider({ children }: props) {
   const [isEnd, setIsEnd] = useState(false);
 
   const nextPage = useCallback(() => {
-    setOffset((prev) => prev + 25);
-  }, [setOffset]);
+    setOffset(gifs.size);
+  }, [setOffset, gifs]);
 
   const addGifs = useCallback(
     (gifsToAdd: APIGifData[]) => {
       const newMap = new Map(gifs);
-      console.log({ newMap, gifs });
 
       gifsToAdd.forEach((gifData) => {
         if (!newMap.has(gifData.id)) {

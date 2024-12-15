@@ -9,7 +9,6 @@ export default function Observer() {
 
   useEffect(() => {
     if (isIntersecting) {
-      console.log("inter");
       nextPage();
     }
   }, [nextPage, isIntersecting]);
