@@ -1,6 +1,6 @@
 import { ListOfGifsProps } from "@/src/types.d";
-import Image from "next/image";
 import Masonry from "react-masonry-css";
+import GifPreview from "../GifPreview";
 import styles from "./styles.module.css";
 
 function ListOfGifs({ data }: ListOfGifsProps) {
@@ -23,13 +23,7 @@ function ListOfGifs({ data }: ListOfGifsProps) {
         {data.map((gifData) => {
           return (
             <div key={gifData.id} className={styles.item}>
-              <Image
-                src={gifData.images.fixed_width.url}
-                alt={gifData.alt_text}
-                width={gifData.images.fixed_width.width}
-                height={gifData.images.fixed_width.height}
-                unoptimized
-              />
+              <GifPreview data={gifData} />
             </div>
           );
         })}
