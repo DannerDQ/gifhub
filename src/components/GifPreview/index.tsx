@@ -13,7 +13,14 @@ function GifPreview({ data }: { data: APIGifData }) {
       style={{ backgroundColor: bgColor.done ? "transparent" : bgColor.value }}
     >
       <picture>
-        <source srcSet={data.images.original.webp} media="(min-width: 780px)" />
+        <source
+          srcSet={data.images.original.webp}
+          media="(min-width: 1024px)"
+        />
+        <source
+          srcSet={data.images.fixed_width.webp}
+          media="(min-width: 780px)"
+        />
         <Image
           src={data.images.fixed_width.webp}
           alt={data.alt_text}
