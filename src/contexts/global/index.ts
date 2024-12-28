@@ -9,7 +9,7 @@ const GlobalContext = createContext<GlobalContextInterface>({
   isEnd: true,
 
   nextPage() {},
-  addGifs(id) {
+  addGifs() {
     return false;
   },
   setEnd() {},

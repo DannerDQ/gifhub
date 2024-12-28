@@ -10,8 +10,10 @@ export default function useObserver() {
     function () {
       if (!ref.current) return;
 
+      const currentElm = ref.current;
+
       const observer = new IntersectionObserver(
-        (entries, _) => {
+        (entries) => {
           const elm = entries[0];
 
           setIsIntersecting(elm.isIntersecting);
@@ -23,11 +25,10 @@ export default function useObserver() {
         }
       );
 
-      observer.observe(ref.current);
+      observer.observe(currentElm);
 
       return () => {
-        if (ref.current) observer.unobserve(ref.current);
-
+        observer.unobserve(currentElm);
         observer.disconnect();
       };
     },

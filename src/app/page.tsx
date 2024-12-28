@@ -19,7 +19,7 @@ export default function Home() {
         setEnd();
       }
     })();
-  }, [offset]);
+  }, [offset, addGifs, setEnd]);
 
   return (
     <div className={styles.container}>

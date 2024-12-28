@@ -3,7 +3,8 @@ interface FetchReturn<T> {
   error?: string;
 }
 
-export default async function fetchData<T = any>(
+
+export default async function fetchData<T = never>(
   url: string
 ): Promise<FetchReturn<T>> {
   try {
@@ -18,9 +19,15 @@ export default async function fetchData<T = any>(
     return {
       data,
     };
-  } catch (error: any) {
+  } catch (error) {
+    if (error instanceof Error) {
+      return {
+        error: error.message,
+      };
+    }
+
     return {
-      error: error.message,
+      error: "Error al obtener los datos :(",
     };
   }
 }

@@ -14,7 +14,7 @@ export async function GET(request: Request) {
         "Content-Type": "application/json",
       },
     });
-  } catch (error: any) {
+  } catch {
     return new Response(
       JSON.stringify({
         ok: false,
