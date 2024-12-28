@@ -3,7 +3,7 @@ interface FetchReturn<T> {
   error?: string;
 }
 
-export default async function useFetch<T = any>(
+export default async function fetchData<T = any>(
   url: string
 ): Promise<FetchReturn<T>> {
   try {
