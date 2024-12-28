@@ -1,3 +1,4 @@
+import Glitch from "@/components/Glitch";
 import SearchBar from "@/components/SearchBar";
 import GlobalContextProvider from "@/contexts/global/provider";
 import { props } from "@/types";
@@ -8,7 +9,9 @@ export default function RootLayout({ children }: props) {
     <html lang="es">
       <body>
         <header>
-          <h1>Gif Hub</h1>
+          <h1>
+            <Glitch text="Gif Hub" />
+          </h1>
           <div>
             <SearchBar />
           </div>
